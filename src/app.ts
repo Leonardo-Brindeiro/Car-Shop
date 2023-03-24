@@ -1,9 +1,9 @@
 import express from 'express';
 
-import CarsRouter from './router/carRouter';
+import routes from './router/Router';
 
 const app = express();
-
-app.use('/cars', CarsRouter);
+app.use(express.json());
+app.use(routes);
 
 export default app;
