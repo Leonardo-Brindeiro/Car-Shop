@@ -1,6 +1,7 @@
 export default class ErrorCustom extends Error {
-  constructor(error: string, message: string) {
+  public status: number;
+  constructor(status: number, message: string) {
     super(message);
-    this.stack = error;
+    this.status = status;
   }
-}
+} // ajuda de Raphael Pacheco

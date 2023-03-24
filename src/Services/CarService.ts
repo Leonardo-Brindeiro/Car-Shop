@@ -23,10 +23,16 @@ class CarService {
     return result.map((e) => this.createCarDomain(e));
   }
   public async getById(id: string):Promise<Car | null> {
-    if (!isValidObjectId(id)) throw new ErrorCustom('422', 'Invalid mongo id');
+    if (!isValidObjectId(id)) throw new ErrorCustom(422, 'Invalid mongo id');
     const ids = new CarODM();
     const result = await ids.getById(id);
-    if (!result) throw new ErrorCustom('404', 'Car not found');
+    if (!result) throw new ErrorCustom(404, 'Car not found');
+    return this.createCarDomain(result);
+  }
+  public async getUpId(id: string, obj: ICar):Promise<Car | null> {
+    await this.getById(id);
+    const ids = new CarODM();
+    const result = await ids.update(id, obj);
     return this.createCarDomain(result);
   }
 }
