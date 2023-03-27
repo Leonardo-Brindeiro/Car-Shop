@@ -30,7 +30,7 @@ abstract class AbstractODM<T> {
 
   public async update(id: string, obj: Partial<T>): Promise<T | null> {
     return this.model.findByIdAndUpdate(
-      { id },
+      { _id: id },
       { ...obj } as UpdateQuery<T>,
       { new: true },
     );

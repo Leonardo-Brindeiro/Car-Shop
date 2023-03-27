@@ -32,7 +32,9 @@ class CarService {
   public async getUpId(id: string, obj: ICar):Promise<Car | null> {
     await this.getById(id);
     const ids = new CarODM();
+    
     const result = await ids.update(id, obj);
+    console.log(result);
     return this.createCarDomain(result);
   }
 }

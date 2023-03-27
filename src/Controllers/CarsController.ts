@@ -57,11 +57,9 @@ class CarController {
   }
 
   public async getUpId() {
-    const { id } = this.req.params;
-    const obj = this.req.body;
     try {
-      const upId = await this.service.getUpId(id, obj);
-      return this.res.status(200).json(upId);
+      const car = await this.service.getUpId(this.req.params.id, this.req.body);
+      return this.res.status(200).json(car);
     } catch (error) {
       this.next(error);
     }
