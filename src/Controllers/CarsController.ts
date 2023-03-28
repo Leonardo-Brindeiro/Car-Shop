@@ -17,15 +17,6 @@ class CarController {
 
   public async create() {
     const car: ICar = this.req.body;
-    // const car: ICar = {
-    //   model: this.req.body.model,
-    //   year: this.req.body.year,
-    //   buyValue: this.req.body.buyValue,
-    //   color: this.req.body.color,
-    //   doorsQty: this.req.body.doorsQty,
-    //   seatsQty: this.req.body.seatsQty,
-    //   status: this.req.body.status,
-    // };
 
     try {
       const newCar = await this.service.create(car);

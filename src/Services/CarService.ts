@@ -34,7 +34,6 @@ class CarService {
     const ids = new CarODM();
     
     const result = await ids.update(id, obj);
-    console.log(result);
     return this.createCarDomain(result);
   }
 }
