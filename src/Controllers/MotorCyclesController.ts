@@ -44,6 +44,15 @@ class MotorcycleController {
       this.next(error);
     }
   }
+
+  public async getUpId() {
+    try {
+      const moto = await this.service.getUpId(this.req.params.id, this.req.body);
+      return this.res.status(200).json(moto);
+    } catch (error) {
+      this.next(error);
+    }
+  }
 }
 
 export default MotorcycleController;

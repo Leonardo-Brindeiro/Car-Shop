@@ -29,6 +29,14 @@ class MotorcycleService {
     if (!result) throw new ErrorCustom(404, 'Motorcycle not found');
     return this.createMotorDomain(result);
   }
+
+  public async getUpId(id: string, obj: IMotorcycle):Promise<Motorcycle | null> {
+    await this.getById(id);
+    const ids = new MotorODM();
+    
+    const result = await ids.update(id, obj);
+    return this.createMotorDomain(result);
+  }
 }
 
 export default MotorcycleService;
